@@ -25,6 +25,7 @@ jobs:
           gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" << EOF
           hostname --ip-address
           ls
+          exit
           EOF
       - name: Testing
         run: |
