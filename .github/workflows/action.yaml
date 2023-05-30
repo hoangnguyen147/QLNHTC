@@ -26,6 +26,7 @@ jobs:
           node --version
           ls
           hostname --ip-address
+          exit
       - name: Testing
         run: |
           node --version
