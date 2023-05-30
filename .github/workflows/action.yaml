@@ -24,6 +24,10 @@ jobs:
         run: |
           gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }}
           node --version
+          ls
+          hostname --ip-address
       - name: Testing
         run: |
           node --version
+          hostname --ip-address
+
