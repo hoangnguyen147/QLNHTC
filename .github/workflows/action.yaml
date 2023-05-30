@@ -22,11 +22,10 @@ jobs:
 
       - name: Deploy to VM instance
         run: |
-          gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" << EOF
-          hostname --ip-address
-          ls
-          exit
-          EOF
+          gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="bash -s" << EOF
+            hostname --ip-address
+            ls
+            EOF
       - name: Testing
         run: |
           node --version
