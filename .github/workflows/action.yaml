@@ -22,7 +22,8 @@ jobs:
 
       - name: Re-Build containers on VM instance
         run: |
-          echo "${{ secrets.GCE_SSH_KEY }}" > temp_ssh_key_file
+          echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > temp_ssh_key_file
+          echo "${{ secrets.GCE_SSH_PUBLIC_KEY }}" > temp_ssh_key_file.pub
           gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --ssh-key-file temp_ssh_key_file --command="echo Hello"
       # - name: Re-Build containers on VM instance
       #   uses: 'google-github-actions/ssh-compute@v0'
