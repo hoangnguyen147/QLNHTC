@@ -23,7 +23,6 @@ jobs:
       - name: Re-Build containers on VM instance
         run:
           gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="
-          sudo su - hoangnguyen147 &&
           cd doanky8/app &&
           git pull origin master &&
           docker-compose -f docker-compose.prod.yml up -d --build"
