@@ -20,9 +20,16 @@ jobs:
           service_account_key: ${{ secrets.GCE_SA_KEY }}
           export_default_credentials: true
 
+      - name: Generate SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keygen -t rsa -b 4096 -C "huyhoangnguyen147z@gmail.com" -f ~/.ssh/id_rsa -N ""
+
+      - name: Display Public Key
+        run: cat ~/.ssh/id_rsa.pub
+
       - name: Re-Build containers on VM instance
         run: |
-          ssh-keygen -t rsa -C "huyhoangnguyen147z@gmail.com"
           gcloud compute ssh --zone "asia-southeast1-b" "doanky8-vm" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="echo $(whoami)"
       # - name: Re-Build containers on VM instance
       #   uses: 'google-github-actions/ssh-compute@v0'
