@@ -21,8 +21,9 @@ jobs:
           export_default_credentials: true
 
       - name: Re-Build containers on VM instance
-        run: 
-          gcloud compute ssh --zone "asia-southeast1-b" "doanky8-vm" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="echo Hello"
+        run: |
+          ssh-keygen -t rsa -C "huyhoangnguyen147z@gmail.com"
+          gcloud compute ssh --zone "asia-southeast1-b" "doanky8-vm" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="echo $(whoami)"
       # - name: Re-Build containers on VM instance
       #   uses: 'google-github-actions/ssh-compute@v0'
       #   with:
