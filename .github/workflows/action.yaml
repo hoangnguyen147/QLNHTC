@@ -31,5 +31,5 @@ jobs:
         with:
           instance_name: 'ubuntu-gcloud'
           zone: 'asia-southeast1-b'
-          ssh_private_key: '${{ secrets.GCE_SA_KEY }}'
+          ssh_private_key: '${{ secrets.GCE_SSH_KEY }}'
           command: 'cd doanky8/app && git pull origin master && docker-compose -f docker-compose.prod.yml up -d --build'
