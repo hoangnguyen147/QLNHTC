@@ -20,12 +20,9 @@ jobs:
           service_account_key: ${{ secrets.GCE_SA_KEY }}
           export_default_credentials: true
 
-      - name: Deploy to VM instance
+      - name: Re-Build containers on VM instance
         run:
           gcloud compute ssh --zone "asia-southeast1-b" "ubuntu-gcloud" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-t" --command="
-          hostname --ip-address &&
-          ls"
-      - name: Testing
-        run: |
-          node --version
-          hostname --ip-address
+          cd doanky8/app &&
+          git pull origin master &&
+          docker-compose -f docker-compose.prod.yml up -d --build"
