@@ -25,4 +25,4 @@ jobs:
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > temp_ssh_key_file
           echo "${{ secrets.GCE_SSH_PUBLIC_KEY }}" > temp_ssh_key_file.pub
           chmod 0600 temp_ssh_key_file
-          gcloud compute ssh --zone "asia-southeast1-b" "doanky8-vm" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-l huyhoangnguyen147z" --ssh-key-file temp_ssh_key_file --command="ls && cd doanky8/app && docker-compose -f docker-compse.prod.yml up -d --build""
+          gcloud compute ssh --zone "asia-southeast1-b" "doanky8-vm" --project ${{ secrets.GCE_PROJECT }} --ssh-flag="-l huyhoangnguyen147z" --ssh-key-file temp_ssh_key_file --command="ls && cd doanky8/app && docker-compose -f docker-compse.prod.yml up -d --build"
