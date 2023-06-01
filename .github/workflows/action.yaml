@@ -13,12 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0
-        with:
-          project_id: ${{ secrets.GCE_PROJECT }}
-          service_account_key: ${{ secrets.GCE_SA_KEY }}
-          export_default_credentials: true
+      # - name: Set up Google Cloud SDK
+      #   uses: google-github-actions/setup-gcloud@v0
+      #   with:
+      #     project_id: ${{ secrets.GCE_PROJECT }}
+      #     service_account_key: ${{ secrets.GCE_SA_KEY }}
+      #     export_default_credentials: true
 
       - name: Re-Build containers on VM instance
         run: |
